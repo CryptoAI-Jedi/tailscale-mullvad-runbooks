@@ -4,6 +4,40 @@ Practical runbooks for using **Tailscale with Mullvad VPN exit nodes** across Li
 
 This repository documents the official Tailscale + Mullvad integration where Mullvad VPN servers appear as **Tailscale exit nodes**. This is different from running the standalone Mullvad VPN app beside Tailscale.
 
+---
+
+## Why This Exists
+
+This repository documents operational runbooks for configuring, validating, and troubleshooting Tailscale with Mullvad exit nodes across Linux, macOS, and Windows environments.
+
+**The goal is to provide repeatable procedures for:**
+
+- Private network access via Tailscale
+- Exit-node routing through Mullvad VPN infrastructure
+- DNS validation and routing verification
+- Incident response for connectivity failures
+- Cross-platform operational consistency
+
+This repo serves as a working reference for operators managing secure, privacy-focused remote access infrastructure. It assumes operational responsibility for uptime, troubleshooting, and recovery—not just initial setup.
+
+---
+
+## Table of Contents
+
+- [Purpose](#purpose)
+- [What This Setup Does](#what-this-setup-does)
+- [Key Concept](#key-concept)
+- [Operational Scenarios Covered](#operational-scenarios-covered)
+- [Requirements](#requirements)
+- [Runbooks](#runbooks)
+- [Quick Start](#quick-start)
+- [Common Verification Flow](#common-verification-flow)
+- [Architecture Overview](#architecture-overview)
+- [Suggested GitHub Topics](#suggested-github-topics)
+- [References](#references)
+
+---
+
 ## Purpose
 
 The purpose of this repo is to provide practical commands and troubleshooting steps for users who want to:
@@ -14,6 +48,8 @@ The purpose of this repo is to provide practical commands and troubleshooting st
 - Switch between Mullvad exit-node locations
 - Keep local LAN access when needed
 - Troubleshoot DNS, routing, and connectivity problems
+
+---
 
 ## What This Setup Does
 
@@ -36,6 +72,8 @@ Basic flow:
 [Public Internet]
 ```
 
+---
+
 ## Key Concept
 
 You are usually **not** running the standalone Mullvad VPN app and Tailscale at the same time.
@@ -47,6 +85,25 @@ Instead:
 3. Your device sends internet-bound traffic through the selected Mullvad exit node.
 4. Your private tailnet access continues to work through Tailscale.
 
+---
+
+## Operational Scenarios Covered
+
+This repository provides runbooks and incident response procedures for:
+
+| Scenario | Coverage |
+| --- | --- |
+| **No internet after enabling exit node** | SEV1 incident playbook with step-by-step recovery |
+| **DNS resolution failures** | Troubleshooting DNS leaks, upstream failures, and resolver conflicts |
+| **Tailnet reachable but public internet fails** | Routing diagnostics and exit node validation |
+| **Exit node enabled but traffic not routing through Mullvad** | IP verification, geolocation checks, and leak detection |
+| **Device cannot reach other tailnet peers** | Split-tunnel diagnostics and firewall rule validation |
+| **Slow or unstable connectivity** | Latency testing, exit node switching, and performance optimization |
+| **Cross-platform deployment** | Consistent procedures for Linux, macOS, and Windows environments |
+| **Reset and recovery** | Safe rollback procedures without losing tailnet access |
+
+---
+
 ## Requirements
 
 - Tailscale account
@@ -56,7 +113,7 @@ Instead:
 - Device granted Mullvad access
 - Admin/root privileges on the local machine
 
-## Recommended Tailscale Version
+**Recommended Tailscale Version:**
 
 Check version:
 
@@ -72,6 +129,8 @@ Tailscale v1.48.3 or later
 
 Using the newest stable version is recommended.
 
+---
+
 ## Runbooks
 
 | File | Purpose |
@@ -85,6 +144,8 @@ Using the newest stable version is recommended.
 | [`runbooks/06-privacy-security-notes.md`](runbooks/06-privacy-security-notes.md) | Privacy model, security considerations, operational notes |
 | [`runbooks/07-command-reference.md`](runbooks/07-command-reference.md) | Quick command reference |
 | [`runbooks/08-incident-playbooks.md`](runbooks/08-incident-playbooks.md) | Incident response playbooks for DNS, routing, exit node, and connectivity failures |
+
+---
 
 ## Quick Start
 
@@ -142,6 +203,8 @@ Check public IP geolocation:
 curl ipinfo.io
 ```
 
+---
+
 ## Common Verification Flow
 
 After enabling a Mullvad exit node, verify:
@@ -196,6 +259,18 @@ ping 1.1.1.1
 ping example.com
 ```
 
+---
+
+## Architecture Overview
+
+Visual representation of the Tailscale + Mullvad routing architecture and common failure points:
+
+![Architecture Diagram](docs/architecture-diagram.svg)
+
+See [`docs/architecture-diagram.svg`](docs/architecture-diagram.svg) for detailed routing flow and troubleshooting decision tree.
+
+---
+
 ## Suggested GitHub Topics
 
 ```text
@@ -213,7 +288,11 @@ macos
 windows
 troubleshooting
 runbook
+incident-response
+sre
 ```
+
+---
 
 ## References
 
