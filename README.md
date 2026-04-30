@@ -84,6 +84,7 @@ Using the newest stable version is recommended.
 | [`runbooks/05-troubleshooting.md`](runbooks/05-troubleshooting.md) | Common failure modes and fixes |
 | [`runbooks/06-privacy-security-notes.md`](runbooks/06-privacy-security-notes.md) | Privacy model, security considerations, operational notes |
 | [`runbooks/07-command-reference.md`](runbooks/07-command-reference.md) | Quick command reference |
+| [`runbooks/08-incident-playbooks.md`](runbooks/08-incident-playbooks.md) | Incident response playbooks for DNS, routing, exit node, and connectivity failures |
 
 ## Quick Start
 
