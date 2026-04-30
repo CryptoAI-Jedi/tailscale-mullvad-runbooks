@@ -1,145 +1,99 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900">
-  <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-      <polygon points="0 0, 10 3, 0 6" fill="#059669" />
-    </marker>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1040" viewBox="0 0 1200 1040" role="img" aria-label="Tailscale and Mullvad architecture, common failure points, and troubleshooting checklist">
+  <rect x="0" y="0" width="1200" height="1040" fill="#ffffff"/>
 
-  <rect width="800" height="900" fill="#ffffff"/>
+  <text x="600" y="42" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#111827" text-anchor="middle">Tailscale + Mullvad: Flow and Incident Quick Guide</text>
+  <text x="600" y="72" font-family="Arial, sans-serif" font-size="16" fill="#4b5563" text-anchor="middle">GitHub-safe SVG: normal flow, six failure points, and first-response checklist</text>
 
-  <!-- Title -->
-  <text x="400" y="30" font-family="sans-serif" font-size="20" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Tailscale + Mullvad Architecture</text>
-  <text x="400" y="50" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">Exit Node Routing Flow &amp; Common Failure Points</text>
+  <text x="60" y="115" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#111827">Normal Traffic Flow</text>
 
-  <!-- Normal Flow Section -->
-  <text x="50" y="85" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333333">Normal Operation</text>
-  
-  <!-- Device -->
-  <rect x="50" y="100" width="200" height="80" rx="5" fill="#dbeafe" stroke="#1e40af" stroke-width="2"/>
-  <text x="150" y="125" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Device</text>
-  <text x="150" y="145" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">Linux / macOS / Windows</text>
-  <text x="150" y="160" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">Tailscale Client</text>
-  <text x="150" y="173" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">tailscale set --exit-node=...</text>
+  <rect x="60" y="140" width="240" height="95" rx="8" ry="8" fill="#dbeafe" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="180" y="175" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#111827" text-anchor="middle">Device</text>
+  <text x="180" y="200" font-family="Arial, sans-serif" font-size="14" fill="#1f2937" text-anchor="middle">Laptop / Server / Workstation</text>
 
-  <!-- Tailscale Tailnet -->
-  <rect x="300" y="100" width="200" height="80" rx="5" fill="#f0f4f8" stroke="#2563eb" stroke-width="2"/>
-  <text x="400" y="125" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Tailscale Tailnet</text>
-  <text x="400" y="145" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">WireGuard Tunnel</text>
-  <text x="400" y="160" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">100.x.x.x network</text>
-  <text x="400" y="173" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">Private mesh network</text>
+  <rect x="345" y="140" width="250" height="95" rx="8" ry="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+  <text x="470" y="175" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#111827" text-anchor="middle">Tailscale Tailnet</text>
+  <text x="470" y="200" font-family="Arial, sans-serif" font-size="14" fill="#1f2937" text-anchor="middle">Encrypted WireGuard mesh</text>
 
-  <!-- Mullvad Exit Node -->
-  <rect x="550" y="100" width="200" height="80" rx="5" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
-  <text x="650" y="125" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Mullvad Exit Node</text>
-  <text x="650" y="145" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">us-nyc-wg-001.mullvad.ts.net</text>
-  <text x="650" y="160" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">Mullvad VPN Server</text>
-  <text x="650" y="173" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">via Tailscale</text>
+  <rect x="640" y="140" width="250" height="95" rx="8" ry="8" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="765" y="175" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#111827" text-anchor="middle">Mullvad Exit Node</text>
+  <text x="765" y="200" font-family="Arial, sans-serif" font-size="14" fill="#1f2937" text-anchor="middle">Selected egress location</text>
 
-  <!-- Public Internet -->
-  <rect x="300" y="230" width="200" height="60" rx="5" fill="#d1fae5" stroke="#059669" stroke-width="2"/>
-  <text x="400" y="255" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Public Internet</text>
-  <text x="400" y="273" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">Egress IP: Mullvad server IP</text>
+  <rect x="935" y="140" width="205" height="95" rx="8" ry="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="1037" y="175" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#111827" text-anchor="middle">Public Internet</text>
+  <text x="1037" y="200" font-family="Arial, sans-serif" font-size="14" fill="#1f2937" text-anchor="middle">Traffic exits from Mullvad IP</text>
 
-  <!-- Arrows -->
-  <path d="M 250 140 L 300 140" stroke="#059669" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
-  <path d="M 500 140 L 550 140" stroke="#059669" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
-  <path d="M 650 180 L 650 210 L 500 210 L 500 230" stroke="#059669" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <line x1="300" y1="188" x2="345" y2="188" stroke="#059669" stroke-width="4"/>
+  <polygon points="345,188 331,180 331,196" fill="#059669"/>
+  <line x1="595" y1="188" x2="640" y2="188" stroke="#059669" stroke-width="4"/>
+  <polygon points="640,188 626,180 626,196" fill="#059669"/>
+  <line x1="890" y1="188" x2="935" y2="188" stroke="#059669" stroke-width="4"/>
+  <polygon points="935,188 921,180 921,196" fill="#059669"/>
 
-  <!-- Flow labels -->
-  <text x="275" y="130" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">WireGuard</text>
-  <text x="525" y="130" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">Exit node</text>
-  <text x="575" y="200" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">Internet</text>
+  <text x="322" y="172" font-family="Arial, sans-serif" font-size="12" fill="#065f46" text-anchor="middle">Tunnel</text>
+  <text x="617" y="172" font-family="Arial, sans-serif" font-size="12" fill="#065f46" text-anchor="middle">Exit routing</text>
+  <text x="912" y="172" font-family="Arial, sans-serif" font-size="12" fill="#065f46" text-anchor="middle">Egress</text>
 
-  <!-- Separator -->
-  <line x1="50" y1="320" x2="750" y2="320" stroke="#d1d5db" stroke-width="1"/>
-  
-  <!-- Failure Points Section -->
-  <text x="50" y="345" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333333">Common Failure Points</text>
+  <line x1="60" y1="280" x2="1140" y2="280" stroke="#d1d5db" stroke-width="2"/>
+  <text x="60" y="318" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#111827">Common Failure Points (6)</text>
 
-  <!-- Failure 1: DNS -->
-  <rect x="50" y="360" width="220" height="100" rx="5" fill="#fef3c7" stroke="#d97706" stroke-width="2" stroke-dasharray="5,5"/>
-  <text x="160" y="380" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1a1a1a" text-anchor="middle">⚠ DNS Resolution Failure</text>
-  <text x="160" y="400" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">Symptom: Can ping 1.1.1.1 but not</text>
-  <text x="160" y="415" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">example.com</text>
-  <text x="160" y="433" font-family="sans-serif" font-size="10" font-style="italic" fill="#555555" text-anchor="middle">Cause: DNS not routing through</text>
-  <text x="160" y="448" font-family="sans-serif" font-size="10" font-style="italic" fill="#555555" text-anchor="middle">Tailscale or upstream failure</text>
+  <rect x="60" y="340" width="340" height="95" rx="8" ry="8" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="80" y="370" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111827">1) DNS resolution fails</text>
+  <text x="80" y="395" font-family="Arial, sans-serif" font-size="13" fill="#374151">Symptom: Can reach IPs, but hostnames fail.</text>
+  <text x="80" y="415" font-family="Arial, sans-serif" font-size="13" fill="#374151">Check DNS settings and MagicDNS behavior.</text>
 
-  <!-- Failure 2: No Internet -->
-  <rect x="290" y="360" width="220" height="100" rx="5" fill="#fef3c7" stroke="#d97706" stroke-width="2" stroke-dasharray="5,5"/>
-  <text x="400" y="380" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1a1a1a" text-anchor="middle">⚠ No Internet Access</text>
-  <text x="400" y="400" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">Symptom: Cannot reach public IPs</text>
-  <text x="400" y="415" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">after enabling exit node</text>
-  <text x="400" y="433" font-family="sans-serif" font-size="10" font-style="italic" fill="#555555" text-anchor="middle">Cause: Routing misconfigured or</text>
-  <text x="400" y="448" font-family="sans-serif" font-size="10" font-style="italic" fill="#555555" text-anchor="middle">exit node not accepting traffic</text>
+  <rect x="430" y="340" width="340" height="95" rx="8" ry="8" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="450" y="370" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111827">2) No internet through exit node</text>
+  <text x="450" y="395" font-family="Arial, sans-serif" font-size="13" fill="#374151">Symptom: Public sites unreachable after switch.</text>
+  <text x="450" y="415" font-family="Arial, sans-serif" font-size="13" fill="#374151">Validate route table and exit-node health.</text>
 
-  <!-- Failure 3: Wrong Exit Node -->
-  <rect x="530" y="360" width="220" height="100" rx="5" fill="#fef3c7" stroke="#d97706" stroke-width="2" stroke-dasharray="5,5"/>
-  <text x="640" y="380" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1a1a1a" text-anchor="middle">⚠ Exit Node Not Active</text>
-  <text x="640" y="400" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">Symptom: IP shows home location</text>
-  <text x="640" y="415" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">not Mullvad server</text>
-  <text x="640" y="433" font-family="sans-serif" font-size="10" font-style="italic" fill="#555555" text-anchor="middle">Cause: Exit node not enabled or</text>
-  <text x="640" y="448" font-family="sans-serif" font-size="10" font-style="italic" fill="#555555" text-anchor="middle">traffic bypassing Tailscale</text>
+  <rect x="800" y="340" width="340" height="95" rx="8" ry="8" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="820" y="370" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111827">3) Exit node not actually active</text>
+  <text x="820" y="395" font-family="Arial, sans-serif" font-size="13" fill="#374151">Symptom: Public IP is still local ISP address.</text>
+  <text x="820" y="415" font-family="Arial, sans-serif" font-size="13" fill="#374151">Reapply: tailscale set --exit-node=...</text>
 
-  <!-- Failure 4: Tailnet Unreachable -->
-  <rect x="50" y="480" width="220" height="100" rx="5" fill="#fef3c7" stroke="#d97706" stroke-width="2" stroke-dasharray="5,5"/>
-  <text x="160" y="500" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1a1a1a" text-anchor="middle">⚠ Tailnet Unreachable</text>
-  <text x="160" y="520" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">Symptom: Cannot reach 100.x.x.x</text>
-  <text x="160" y="535" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">peers on tailnet</text>
-  <text x="160" y="553" font-family="sans-serif" font-size="10" font-style="italic" fill="#555555" text-anchor="middle">Cause: Firewall blocking or exit</text>
-  <text x="160" y="568" font-family="sans-serif" font-size="10" font-style="italic" fill="#555555" text-anchor="middle">node breaking split-tunnel</text>
+  <rect x="60" y="460" width="340" height="95" rx="8" ry="8" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="80" y="490" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111827">4) Tailnet peers unreachable</text>
+  <text x="80" y="515" font-family="Arial, sans-serif" font-size="13" fill="#374151">Symptom: Cannot reach 100.x.x.x devices.</text>
+  <text x="80" y="535" font-family="Arial, sans-serif" font-size="13" fill="#374151">Inspect firewall and ACL policy changes.</text>
 
-  <!-- Failure 5: Slow Performance -->
-  <rect x="290" y="480" width="220" height="100" rx="5" fill="#fef3c7" stroke="#d97706" stroke-width="2" stroke-dasharray="5,5"/>
-  <text x="400" y="500" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1a1a1a" text-anchor="middle">⚠ Slow Connectivity</text>
-  <text x="400" y="520" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">Symptom: High latency or</text>
-  <text x="400" y="535" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">packet loss through exit node</text>
-  <text x="400" y="553" font-family="sans-serif" font-size="10" font-style="italic" fill="#555555" text-anchor="middle">Cause: Distant exit node or</text>
-  <text x="400" y="568" font-family="sans-serif" font-size="10" font-style="italic" fill="#555555" text-anchor="middle">network congestion</text>
+  <rect x="430" y="460" width="340" height="95" rx="8" ry="8" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="450" y="490" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111827">5) Latency or packet loss spike</text>
+  <text x="450" y="515" font-family="Arial, sans-serif" font-size="13" fill="#374151">Symptom: Slow apps after enabling exit node.</text>
+  <text x="450" y="535" font-family="Arial, sans-serif" font-size="13" fill="#374151">Try a different Mullvad city/region node.</text>
 
-  <!-- Failure 6: LAN Access Lost -->
-  <rect x="530" y="480" width="220" height="100" rx="5" fill="#fef3c7" stroke="#d97706" stroke-width="2" stroke-dasharray="5,5"/>
-  <text x="640" y="500" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1a1a1a" text-anchor="middle">⚠ Local LAN Unreachable</text>
-  <text x="640" y="520" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">Symptom: Cannot reach local</text>
-  <text x="640" y="535" font-family="sans-serif" font-size="10" fill="#555555" text-anchor="middle">192.168.x.x devices</text>
-  <text x="640" y="553" font-family="sans-serif" font-size="10" font-style="italic" fill="#555555" text-anchor="middle">Cause: --exit-node-allow-lan</text>
-  <text x="640" y="568" font-family="sans-serif" font-size="10" font-style="italic" fill="#555555" text-anchor="middle">-access not set</text>
+  <rect x="800" y="460" width="340" height="95" rx="8" ry="8" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+  <text x="820" y="490" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111827">6) Local LAN access lost</text>
+  <text x="820" y="515" font-family="Arial, sans-serif" font-size="13" fill="#374151">Symptom: Cannot reach 192.168.x.x resources.</text>
+  <text x="820" y="535" font-family="Arial, sans-serif" font-size="13" fill="#374151">Use --exit-node-allow-lan-access if needed.</text>
 
-  <!-- Troubleshooting Section -->
-  <line x1="50" y1="610" x2="750" y2="610" stroke="#d1d5db" stroke-width="1"/>
-  <text x="50" y="635" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333333">First Response Checklist</text>
+  <line x1="60" y1="600" x2="1140" y2="600" stroke="#d1d5db" stroke-width="2"/>
+  <text x="60" y="638" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#111827">Basic Troubleshooting Checklist</text>
 
-  <!-- Checklist Box -->
-  <rect x="50" y="650" width="700" height="210" rx="5" fill="#f0f4f8" stroke="#2563eb" stroke-width="2"/>
-  
-  <text x="70" y="675" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1a1a1a">1. Verify Tailscale Status</text>
-  <text x="90" y="695" font-family="sans-serif" font-size="10" fill="#555555">→ tailscale status</text>
-  <text x="90" y="710" font-family="sans-serif" font-size="10" fill="#555555">→ Check if exit node is listed and active</text>
+  <rect x="60" y="660" width="1080" height="320" rx="10" ry="10" fill="#f8fafc" stroke="#334155" stroke-width="2"/>
 
-  <text x="70" y="735" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1a1a1a">2. Verify Exit Node Configuration</text>
-  <text x="90" y="755" font-family="sans-serif" font-size="10" fill="#555555">→ tailscale exit-node list</text>
-  <text x="90" y="770" font-family="sans-serif" font-size="10" fill="#555555">→ Confirm selected Mullvad exit node appears</text>
+  <text x="90" y="700" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111827">1. Confirm Tailscale state</text>
+  <text x="110" y="724" font-family="Arial, sans-serif" font-size="14" fill="#334155">Run: tailscale status</text>
+  <text x="110" y="746" font-family="Arial, sans-serif" font-size="14" fill="#334155">Expected: logged in, peers visible, no auth errors</text>
 
-  <text x="70" y="795" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1a1a1a">3. Test Public IP &amp; Geolocation</text>
-  <text x="90" y="815" font-family="sans-serif" font-size="10" fill="#555555">→ curl -4 ifconfig.me &amp;&amp; echo</text>
-  <text x="90" y="830" font-family="sans-serif" font-size="10" fill="#555555">→ curl ipinfo.io</text>
-  <text x="90" y="845" font-family="sans-serif" font-size="10" fill="#555555">→ Verify IP matches Mullvad location</text>
+  <text x="90" y="780" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111827">2. Verify exit node selection and route</text>
+  <text x="110" y="804" font-family="Arial, sans-serif" font-size="14" fill="#334155">Run: tailscale exit-node list</text>
+  <text x="110" y="826" font-family="Arial, sans-serif" font-size="14" fill="#334155">Then reapply exit node if uncertain</text>
 
-  <text x="420" y="675" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1a1a1a">4. Test DNS Resolution</text>
-  <text x="440" y="695" font-family="sans-serif" font-size="10" fill="#555555">→ ping -c 4 1.1.1.1</text>
-  <text x="440" y="710" font-family="sans-serif" font-size="10" fill="#555555">→ ping -c 4 example.com</text>
+  <text x="90" y="860" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111827">3. Check internet and DNS separately</text>
+  <text x="110" y="884" font-family="Arial, sans-serif" font-size="14" fill="#334155">Run: ping 1.1.1.1 and ping example.com</text>
+  <text x="110" y="906" font-family="Arial, sans-serif" font-size="14" fill="#334155">If IP works and DNS fails, focus DNS path first</text>
 
-  <text x="420" y="735" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1a1a1a">5. Check Routing Tables</text>
-  <text x="440" y="755" font-family="sans-serif" font-size="10" fill="#555555">→ ip route (Linux)</text>
-  <text x="440" y="770" font-family="sans-serif" font-size="10" fill="#555555">→ netstat -rn (macOS)</text>
-  <text x="440" y="785" font-family="sans-serif" font-size="10" fill="#555555">→ route print (Windows)</text>
+  <text x="620" y="700" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111827">4. Validate egress IP</text>
+  <text x="640" y="724" font-family="Arial, sans-serif" font-size="14" fill="#334155">Run: curl -4 ifconfig.me</text>
+  <text x="640" y="746" font-family="Arial, sans-serif" font-size="14" fill="#334155">Expected: Mullvad exit node public address</text>
 
-  <text x="420" y="810" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1a1a1a">6. Reset If Necessary</text>
-  <text x="440" y="830" font-family="sans-serif" font-size="10" fill="#555555">→ tailscale set --exit-node=</text>
-  <text x="440" y="845" font-family="sans-serif" font-size="10" fill="#555555">→ Wait 10 seconds, re-enable</text>
+  <text x="620" y="780" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111827">5. Inspect routing table</text>
+  <text x="640" y="804" font-family="Arial, sans-serif" font-size="14" fill="#334155">Linux: ip route</text>
+  <text x="640" y="826" font-family="Arial, sans-serif" font-size="14" fill="#334155">macOS: netstat -rn | Windows: route print</text>
 
-  <!-- Footer -->
-  <text x="400" y="885" font-family="sans-serif" font-size="10" fill="#6b7280" text-anchor="middle">
-    See runbooks/08-incident-playbooks.md for detailed recovery procedures
-  </text>
+  <text x="620" y="860" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#111827">6. Reset path if still broken</text>
+  <text x="640" y="884" font-family="Arial, sans-serif" font-size="14" fill="#334155">Clear exit node, wait 10 seconds, set it again</text>
+  <text x="640" y="906" font-family="Arial, sans-serif" font-size="14" fill="#334155">Re-test peers, DNS, and public egress IP</text>
+
+  <text x="600" y="1018" font-family="Arial, sans-serif" font-size="13" fill="#6b7280" text-anchor="middle">Reference: runbooks/08-incident-playbooks.md</text>
 </svg>
