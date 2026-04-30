@@ -263,11 +263,26 @@ ping example.com
 
 ## Architecture Overview
 
-Visual representation of the Tailscale + Mullvad routing architecture and common failure points:
+Native Mermaid diagram of the Tailscale + Mullvad routing path:
 
-![Architecture Diagram](docs/architecture-diagram.svg)
+```mermaid
+graph TD
+    A[Device<br/>Linux / macOS / Windows] -->|WireGuard tunnel| B[Tailscale Tailnet]
+    B -->|Exit node routing policy| C[Mullvad Exit Node<br/>via Tailscale]
+    C -->|Encrypted egress to destination| D[Public Internet]
 
-See [`docs/architecture-diagram.svg`](docs/architecture-diagram.svg) for detailed routing flow and troubleshooting decision tree.
+    E[Verification Signals] -.->|tailscale status / exit-node list| B
+    E -.->|curl -4 ifconfig.me / ipinfo.io| C
+```
+
+**Common failure points to check:**
+
+1. **DNS resolution failure** — Hostnames fail while raw IP tests may still work.
+2. **No internet after enabling exit node** — Exit path configured but no public egress.
+3. **Inactive or unreachable Mullvad exit node** — Selected node unavailable or policy mismatch.
+4. **Tailnet peers unreachable** — Private mesh access broken while troubleshooting internet routing.
+5. **Slow or unstable connectivity** — High latency, packet loss, or poor exit-node performance.
+6. **Local LAN access lost** — Missing `--exit-node-allow-lan-access=true` or conflicting routes.
 
 ---
 
