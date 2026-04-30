@@ -271,29 +271,6 @@ See [`docs/architecture-diagram.svg`](docs/architecture-diagram.svg) for detaile
 
 ---
 
-## Suggested GitHub Topics
-
-```text
-tailscale
-mullvad
-vpn
-wireguard
-exit-node
-networking
-dns
-routing
-privacy
-linux
-macos
-windows
-troubleshooting
-runbook
-incident-response
-sre
-```
-
----
-
 ## References
 
 - Tailscale Mullvad exit nodes documentation: https://tailscale.com/docs/features/exit-nodes/mullvad-exit-nodes
